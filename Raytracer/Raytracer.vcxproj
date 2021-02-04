@@ -12,10 +12,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\bitmap.cpp" />
+    <ClCompile Include="src\core\Point.cpp" />
+    <ClCompile Include="src\core\Ray.cpp" />
+    <ClCompile Include="src\core\Raytracer.cpp" />
+    <ClCompile Include="src\core\Vector.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\core\Pixel.h" />
+    <ClInclude Include="inc\core\Point.h" />
+    <ClInclude Include="inc\core\Ray.h" />
+    <ClInclude Include="inc\core\Vector.h" />
+    <ClInclude Include="inc\core\Raytracer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B1078DD5-D827-4CE7-B435-14846D067FDB}</ProjectGuid>
@@ -49,10 +57,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)inc;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)inc;C:\Lib\SDL2-2.0.14\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Lib\SDL2-2.0.14\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)inc;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)inc;C:\Lib\SDL2-2.0.14\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Lib\SDL2-2.0.14\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -64,7 +74,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
@@ -84,7 +94,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>

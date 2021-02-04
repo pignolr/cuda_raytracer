@@ -25,10 +25,18 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\core\bitmap.cpp" />
+    <ClCompile Include="src\core\Point.cpp" />
+    <ClCompile Include="src\core\Vector.cpp" />
+    <ClCompile Include="src\core\Ray.cpp" />
+    <ClCompile Include="src\core\Raytracer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\core\Pixel.h">
       <Filter>inc\core</Filter>
     </ClInclude>
+    <ClInclude Include="inc\core\Point.h" />
+    <ClInclude Include="inc\core\Vector.h" />
+    <ClInclude Include="inc\core\Ray.h" />
+    <ClInclude Include="inc\core\Raytracer.h" />
   </ItemGroup>
 </Project>
