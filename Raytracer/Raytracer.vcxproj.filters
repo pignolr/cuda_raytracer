@@ -29,6 +29,8 @@
     <ClCompile Include="src\core\Vector.cpp" />
     <ClCompile Include="src\core\Ray.cpp" />
     <ClCompile Include="src\core\Raytracer.cpp" />
+    <ClCompile Include="src\gui\Window.cpp" />
+    <ClCompile Include="src\gui\SDLVideoInstance.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\core\Pixel.h">
@@ -38,5 +40,10 @@
     <ClInclude Include="inc\core\Vector.h" />
     <ClInclude Include="inc\core\Ray.h" />
     <ClInclude Include="inc\core\Raytracer.h" />
+    <ClInclude Include="inc\gui\Window.h" />
+    <ClInclude Include="inc\gui\SDLInstanceError.h" />
+    <ClInclude Include="inc\common\Singleton.h" />
+    <ClInclude Include="inc\gui\SDLVideoInstance.h" />
+    <ClInclude Include="inc\gui\WindowError.h" />
   </ItemGroup>
 </Project>

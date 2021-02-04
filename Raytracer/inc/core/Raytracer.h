@@ -7,9 +7,9 @@
 
 namespace raytracer::core {
 	class Raytracer {
-		size_t _screen_width;
-		size_t _screen_height;
-		MatrixPixel _screen_pixels;
+		size_t _pixel_matrix_width;
+		size_t _pixel_matrix_height;
+		PixelMatrix _pixel_matrix;
 
 		Point _camera_position;
 
@@ -20,9 +20,9 @@ namespace raytracer::core {
 		const Point& get_camera_position() { return _camera_position; }
 		void set_camera_position(Point position) { _camera_position = std::move(position); }
 
-		void create_image(const std::string& filename) const;
-		void create_image() const;
+		void create_image(const std::string& dest = "") const;
 
 		void compute_raycasting();
+		const PixelMatrix& Raytracer::get_pixel_matrix() const noexcept;
 	};
 }

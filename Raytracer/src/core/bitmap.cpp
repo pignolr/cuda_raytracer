@@ -61,7 +61,7 @@ namespace raytracer::core {
 		image_file.write((char*)(info_header), sizeof(info_header));
 	}
 
-	static void write_bitmap_color_header(std::fstream& image_file, const MatrixPixel& matrix, uint32_t padding_size)
+	static void write_bitmap_color_header(std::fstream& image_file, const PixelMatrix& matrix, uint32_t padding_size)
 	{
 		char padding[] = { 0,0,0 };
 
@@ -73,30 +73,33 @@ namespace raytracer::core {
 		}
 	}
 
-	void create_bitmap(const MatrixPixel& matrix, const std::string& filename)
+	static std::string generate_filename()
 	{
-		auto image_file = std::fstream(filename, std::ios_base::app | std::ios_base::binary);
-		uint32_t height = matrix.size();
-		uint32_t width = matrix[0].size();
+		if (!std::filesystem::exists("results"))
+			std::filesystem::create_directories("results");
+
+		std::time_t t = std::time(nullptr);
+		std::tm tm = *std::localtime(&t);
+
+		std::stringstream ss;
+		ss << "results/raytracer_image_" << std::put_time(&tm, "%d-%m-%Y_%H-%M-%S") << ".bmp";
+		return ss.str();
+	}
+
+	void create_bitmap(const PixelMatrix& matrix, const std::string& dest)
+	{
+		// generate image filename if not provided
+		std::string image_filename = dest != "" ? dest : generate_filename();
+
+		auto image_file = std::fstream(dest, std::ios_base::app | std::ios_base::binary);
+		uint32_t height = static_cast<uint32_t>(matrix.size());
+		uint32_t width = static_cast<uint32_t>(matrix[0].size());
 		uint32_t padding_size = (4 - (width * BYTES_PER_PIXEL) % 4) % 4;
 
 		write_bitmap_file_header(image_file, height, width, padding_size);
 		write_bitmap_info_header(image_file, height, width);
 		write_bitmap_color_header(image_file, matrix, padding_size);
 
-		std::cout << "The image \"" << filename << "\" has been created." << std::endl;
-	}
-
-	void create_bitmap(const MatrixPixel& matrix)
-	{
-		if (!std::filesystem::exists("results"))
-			std::filesystem::create_directories("results");
-
-		auto t = std::time(nullptr);
-		auto tm = *std::localtime(&t);
-		std::stringstream ss;
-
-		ss << "results/raytracer_image_" << std::put_time(&tm, "%d-%m-%Y_%H-%M-%S") << ".bmp";
-		create_bitmap(matrix, ss.str());
+		std::cout << "The image \"" << image_filename << "\" has been created." << std::endl;
 	}
 }

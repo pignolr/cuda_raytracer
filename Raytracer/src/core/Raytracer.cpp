@@ -2,24 +2,24 @@
 
 namespace raytracer::core {
 	Raytracer::Raytracer(size_t width, size_t height, Point position):
-		_screen_width(width),
-		_screen_height(height),
-		_screen_pixels(height, std::vector<core::Pixel>(width)),
+		_pixel_matrix_width(width),
+		_pixel_matrix_height(height),
+		_pixel_matrix(height, std::vector<core::Pixel>(width)),
 		_camera_position(std::move(position))
 	{}
 
-	void Raytracer::create_image(const std::string& filename) const
+	void Raytracer::create_image(const std::string& dest) const
 	{
-		create_bitmap(_screen_pixels, filename);
-	}
-	
-	void Raytracer::create_image() const
-	{
-		create_bitmap(_screen_pixels);
+		create_bitmap(_pixel_matrix, dest);
 	}
 
 	void Raytracer::compute_raycasting()
 	{
 
+	}
+
+	const PixelMatrix &Raytracer::get_pixel_matrix() const noexcept
+	{
+		return _pixel_matrix;
 	}
 }

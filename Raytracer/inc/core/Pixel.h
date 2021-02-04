@@ -14,7 +14,6 @@ namespace raytracer::core {
 		~Pixel() = default;
 	};
 
-	using MatrixPixel = std::vector<std::vector<core::Pixel>>;
-	void create_bitmap(const MatrixPixel& matrix);
-	void create_bitmap(const MatrixPixel& matrix, const std::string& filename);
+	using PixelMatrix = std::vector<std::vector<core::Pixel>>;
+	void create_bitmap(const PixelMatrix& matrix, const std::string& dest = "");
 }
